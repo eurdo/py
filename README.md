@@ -10,6 +10,8 @@
 ② 每輪確定最小值：假設當前索引 i 為最小值索引 min_index。從 i+1 到 n-1 遍歷，若找到更小元素，則更新 min_index。
 
 ③ 交換元素：若 min_index ≠ i，則交換 arr[i] 與 arr[min_index]。
+<img width="661" height="308" alt="C1" src="https://github.com/user-attachments/assets/c09eee73-388a-4afb-8263-9116e1c63a5e" />
+<img width="337" height="46" alt="E1" src="https://github.com/user-attachments/assets/fcbd2e13-3ae1-4fc4-a4a8-073adf28a238" />
 
 
 冒泡排序回顧
@@ -23,6 +25,8 @@
 ④ 比較與交換：若 arr[j] > arr[j+1]，則交換兩者。
 
 ⑤ 結束條件：重複步驟 2–4，直到所有輪次完成。
+<img width="607" height="260" alt="C2" src="https://github.com/user-attachments/assets/66849c67-01e4-4b74-bcdf-51b5f0da33a5" />
+<img width="321" height="47" alt="E2" src="https://github.com/user-attachments/assets/ea95bd66-5e46-40a2-896b-e7e2e8908a24" />
 
 
 插入排序回顧
@@ -34,6 +38,8 @@
 ③ 元素後移：從已排序部分的末尾（索引 j = i-1）向前掃描，將比 current 大的元素後移，直到找到第一個不大於 current 的位置或掃描完所有元素。
 
 ④ 插入元素：將 current 放入 j+1 位置。
+<img width="612" height="301" alt="C3" src="https://github.com/user-attachments/assets/40771d51-7059-46f3-819c-327ae8800a4e" />
+<img width="333" height="48" alt="E3" src="https://github.com/user-attachments/assets/241f5d64-f27f-44fa-92eb-1c3eb1e58ee9" />
 
 
 計數排序回顧
@@ -45,6 +51,8 @@
 ③ 重構有序陣列：初始化索引 index = 0。遍歷計數陣列 count，索引由 0 到 r，若 count[v] > 0，則將 v 放入原陣列 arr[index]，index += 1，並 count[v] -= 1，重複此步驟直到 count[v] 為 0。
 
 ④ 排序完成。
+<img width="683" height="336" alt="C4" src="https://github.com/user-attachments/assets/758334be-9937-49ec-a9c9-5f8cbab39917" />
+<img width="332" height="43" alt="E4" src="https://github.com/user-attachments/assets/0a50e795-6654-4f82-bfff-e429edc16a76" />
 
 
 合併排序回顧
@@ -67,6 +75,9 @@ II. 合併兩個有序列表
 ③ 處理剩餘節點：將未遍歷完的鏈結接至末端。
 
 ④ 返回 zero.next 為合併後有序鏈結。
+<img width="733" height="437" alt="C5" src="https://github.com/user-attachments/assets/bc767d58-c762-4ff6-96b1-b4ba5254953d" />
+<img width="805" height="643" alt="C5-2" src="https://github.com/user-attachments/assets/4a40954c-5f59-4089-9589-98123f095dff" />
+<img width="280" height="45" alt="E5" src="https://github.com/user-attachments/assets/7026e616-83da-4d3d-8b22-2fee1dea53f4" />
 
 
 快速排序回顧
@@ -87,6 +98,8 @@ II. 遞迴排序
 ② 執行分區函數以取得基準位置。
 
 ③ 對左子陣列和右子陣列分別遞迴執行 quickSort。
+<img width="593" height="247" alt="C6" src="https://github.com/user-attachments/assets/f2e77da8-15d3-4869-b549-5b139637d213" />
+<img width="310" height="43" alt="E6" src="https://github.com/user-attachments/assets/86f1749d-80cb-4725-925e-1ffc176d595c" />
 
 
 桶排序（Bucket Sort）
@@ -131,3 +144,15 @@ O(n)。
 
 不適合大規模資料：儘管理論上時間複雜度優異，但在實際場景中使用桶排序於大規模資料排序不太實用。
 CSDN
+
+
+思路與算法
+Ⅰ、桶排序
+① 初始化桶和頻率陣列：建立「字串長度+1」的桶 bucket，索引 i 表示頻率為 i 的字元列表；同時建立長度為 max 的頻率陣列 count，用於記錄每個字元的出現次數。
+② 統計字元頻率：透過 ord(char) 取得字元的 ASCII 碼，作為頻率陣列的索引。
+③ 將字元按照頻率放入桶中：遍歷頻率陣列，將每個字元以其頻率作為索引放入桶中。
+④ 返回桶陣列：返回桶陣列，其中每個桶包含對應頻率的字元列表。
+
+Ⅱ、頻率排序
+① 呼叫桶排序生成桶陣列：桶陣列 bucket 的索引表示頻率，每個桶存放對應頻率的字元列表。
+② 逆序遍歷桶陣列生成結果字串：從最高頻率（len(s)）開始，確保先處理高頻字元。對於頻率為 i 的每個字元，重複 i 次並拼接到結果字串中。
